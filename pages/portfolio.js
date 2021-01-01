@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo";
 import Link from "next/link";
+import Image from "next/image";
 
 const porfolios = [
   {
@@ -46,14 +47,12 @@ export default function Portfolio() {
                 <div class="column is-4">
                   <div class="card">
                     <div class="card-image">
-                      <img
+                      <Image
                         src="/images/day94-ui-ux.png"
                         alt="web studio"
-                        style={{
-                          objectFit: "cover",
-                          width: "100%",
-                          height: 150,
-                        }}
+                        layout="responsive"
+                        width={150}
+                        height={150}
                       />
                     </div>
                     <div class="card-content">
