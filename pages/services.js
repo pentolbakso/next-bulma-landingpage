@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 
 export default function OurServices() {
   return (
@@ -10,10 +11,12 @@ export default function OurServices() {
           <div class="container">
             <h2 class="is-size-4">Our Services</h2>
             <div class="has-text-centered">
-              <img
+              <Image
                 src="/images/118-macbook.png"
                 alt="web studio"
-                style={{ objectFit: "cover", width: 300, height: 300 }}
+                layout="intrinsic"
+                width={400}
+                height={400}
               />
             </div>
             <p>
