@@ -52,7 +52,7 @@ collections:
     editor:
       preview: false
     files:
-      - name: "post_tags"
+      - name: "post-tags"
         label: "Post Tags"
         file: "cms/meta/post-tags.json"
         description: "List of tags for posts"
@@ -109,8 +109,8 @@ collections:
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
-        dateFormat: "YYYY-MM-DD"
-        timeFormat: false
+        date_format: "YYYY-MM-DD"
+        time_format: false
       - label: Tags
         label_singular: "Tag"
         name: "tags"
@@ -121,12 +121,12 @@ collections:
           name: tag
           widget: relation
           collection: "meta"
-          file: "post_tags"
-          searchFields:
-            - "post_tags.*.name"
-          displayFields:
-            - "post_tags.*.name"
-          valueField: "post_tags.*.slug"
+          file: "post-tags"
+          search_fields:
+            - "post-tags.*.name"
+          display_fields:
+            - "post-tags.*.name"
+          value_field: "post-tags.*.slug"
       - label: "Body"
         name: "body"
         widget: "markdown"
