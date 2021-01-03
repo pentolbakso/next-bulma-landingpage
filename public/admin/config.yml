@@ -52,7 +52,7 @@ collections:
     editor:
       preview: false
     files:
-      - name: "post-tags"
+      - name: "post_tags"
         label: "Post Tags"
         file: "cms/meta/post-tags.json"
         description: "List of tags for posts"
@@ -121,12 +121,12 @@ collections:
           name: tag
           widget: relation
           collection: "meta"
-          file: "post-tags"
+          file: "post_tags"
           searchFields:
-            - "post-tags.*.name"
+            - "post_tags.*.name"
           displayFields:
-            - "post-tags.*.name"
-          valueField: "post-tags.*.slug"
+            - "post_tags.*.name"
+          valueField: "post_tags.*.slug"
       - label: "Body"
         name: "body"
         widget: "markdown"
