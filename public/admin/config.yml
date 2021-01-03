@@ -139,7 +139,7 @@ collections:
     create: true
     slug: "{{slug}}"
     identifier_field: slug
-    summary: "[{{date}}] {{title}}"
+    summary: "{{title}}"
     fields:
       - label: "Slug"
         name: "slug"
