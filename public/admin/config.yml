@@ -2,9 +2,9 @@ backend:
   name: github
   repo: pentolbakso/next-bulma-landingpage
   branch: cms
-media_folder: public/img
-public_folder: img
-publish_mode: editorial_workflow
+media_folder: public/images
+public_folder: images
+#publish_mode: editorial_workflow
 
 collections:
   - name: "settings"
@@ -47,7 +47,7 @@ collections:
             widget: "string"
 
   - name: "meta"
-    label: "Meta"
+    label: "Tags"
     delete: false
     editor:
       preview: false
@@ -57,7 +57,7 @@ collections:
         file: "cms/meta/post-tags.json"
         description: "List of tags for posts"
         fields:
-          - name: tags
+          - name: "tags"
             label: Tags
             label_singular: "Tag"
             widget: list
@@ -90,14 +90,14 @@ collections:
                 hint: "Tag name for displaying on the site"
 
   - name: "posts"
-    label: "Posts"
-    folder: "pages/posts"
+    label: "Blog Posts"
+    folder: "pages/blog"
     extension: "mdx"
     format: "frontmatter"
     create: true
     slug: "{{slug}}"
     identifier_field: slug
-    summary: "{{title}}"
+    summary: "[{{date}}] {{title}}"
     fields:
       - label: "Slug"
         name: "slug"
@@ -123,10 +123,49 @@ collections:
           collection: "meta"
           file: "post-tags"
           search_fields:
-            - "post-tags.*.name"
+            - "tags.*.name"
           display_fields:
-            - "post-tags.*.name"
-          value_field: "post-tags.*.slug"
+            - "tags.*.name"
+          value_field: "tags.*.slug"
       - label: "Body"
         name: "body"
+        widget: "markdown"
+
+  - name: "portfolios"
+    label: "Portfolio"
+    folder: "pages/portfolio"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: slug
+    summary: "[{{date}}] {{title}}"
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Image / Screenshot"
+        name: "image"
+        widget: image
+      - label: Tags
+        label_singular: "Tag"
+        name: "tags"
+        widget: list
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: relation
+          collection: "meta"
+          file: "portfolio-tags"
+          search_fields:
+            - "tags.*.name"
+          display_fields:
+            - "tags.*.name"
+          value_field: "tags.*.slug"
+      - label: "Description"
+        name: "description"
         widget: "markdown"
