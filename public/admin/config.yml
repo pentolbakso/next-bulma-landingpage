@@ -54,7 +54,7 @@ collections:
     files:
       - name: "post-tags"
         label: "Post Tags"
-        file: "meta/post-tags.json"
+        file: "cms/meta/post-tags.json"
         description: "List of tags for posts"
         fields:
           - name: tags
@@ -72,7 +72,7 @@ collections:
                 hint: "Tag name for displaying on the site"
       - name: "portfolio-tags"
         label: "Portfolio Tags"
-        file: "meta/portfolio-tags.json"
+        file: "cms/meta/portfolio-tags.json"
         description: "List of tags for portfolio"
         fields:
           - name: tags
