@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo";
 import { event } from "../lib/analytics";
+import config from "../cms/site-settings.json";
 
 export default function Contact() {
   function sendEmail() {
@@ -9,7 +10,7 @@ export default function Contact() {
   }
 
   function sendWhatsapp() {
-    const number = "62811111111";
+    const number = config.contact_phonenumber;
     const text = "Hi";
     const url = `https://api.whatsapp.com/send?phone=${number}&text=${encodeURIComponent(
       text
@@ -25,7 +26,7 @@ export default function Contact() {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Get in touch</h2>
+            <h2 class="is-size-3">Get in touch</h2>
             <br />
             <ul class="is-size-5">
               <li>
@@ -33,7 +34,7 @@ export default function Contact() {
                   <span class="icon is-medium">
                     <i class="far fa-envelope"></i>
                   </span>
-                  <span>contact@awesomesaucestudio.com</span>
+                  <span>{config.contact_email}</span>
                 </a>
               </li>
               <li>
@@ -48,7 +49,7 @@ export default function Contact() {
                 <span class="icon is-medium">
                   <i class="fa fa-map-marker-alt"></i>
                 </span>
-                <span>Jalan Mawar 33, Bandung, Indonesia</span>
+                <span>{config.contact_address}</span>
               </li>
             </ul>
           </div>

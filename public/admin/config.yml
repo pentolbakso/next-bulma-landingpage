@@ -1,0 +1,172 @@
+backend:
+  name: github
+  repo: pentolbakso/next-bulma-landingpage
+  branch: master
+media_folder: "public/images"
+public_folder: "/images"
+#publish_mode: editorial_workflow
+
+collections:
+  - name: "settings"
+    label: "Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "site"
+        label: "Site Settings"
+        file: "cms/site-settings.json"
+        description: "General site settings"
+        fields:
+          - label: "URL"
+            name: "base_url"
+            widget: "string"
+            hint: "Do not enter the trailing slash of the URL"
+          - label: "Site title"
+            name: "site_title"
+            widget: "string"
+          - label: "Site description"
+            name: "site_description"
+            widget: "string"
+          - label: "Twitter account"
+            name: "twitter_account"
+            widget: "string"
+          - label: "Facebook account"
+            name: "facebook_account"
+            widget: "string"
+          - label: "Instagram account"
+            name: "instagram_account"
+            widget: "string"
+          - label: "Contact Email"
+            name: "contact_email"
+            widget: "string"
+          - label: "Contact Phonenumber"
+            name: "contact_phonenumber"
+            widget: "string"
+          - label: "Contact Address"
+            name: "contact_address"
+            widget: "string"
+
+  - name: "meta"
+    label: "Tags"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "post-tags"
+        label: "Post Tags"
+        file: "cms/meta/post-tags.json"
+        description: "List of tags for posts"
+        fields:
+          - name: "tags"
+            label: Tags
+            label_singular: "Tag"
+            widget: list
+            fields:
+              - label: "Slug"
+                name: "slug"
+                widget: "string"
+                hint: "The part of a URL identifies the tag"
+              - label: "Display Name"
+                name: "name"
+                widget: "string"
+                hint: "Tag name for displaying on the site"
+      - name: "portfolio-tags"
+        label: "Portfolio Tags"
+        file: "cms/meta/portfolio-tags.json"
+        description: "List of tags for portfolio"
+        fields:
+          - name: tags
+            label: Tags
+            label_singular: "Tag"
+            widget: list
+            fields:
+              - label: "Slug"
+                name: "slug"
+                widget: "string"
+                hint: "The part of a URL identifies the tag"
+              - label: "Display Name"
+                name: "name"
+                widget: "string"
+                hint: "Tag name for displaying on the site"
+
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "data/posts"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: slug
+    summary: "[{{date}}] {{title}}"
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - label: Tags
+        label_singular: "Tag"
+        name: "tags"
+        widget: list
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: relation
+          collection: "meta"
+          file: "post-tags"
+          search_fields:
+            - "tags.*.name"
+          display_fields:
+            - "tags.*.name"
+          value_field: "tags.*.slug"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  - name: "portfolios"
+    label: "Portfolio"
+    folder: "data/portfolios"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: slug
+    summary: "{{title}}"
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Image / Screenshot"
+        name: "image"
+        widget: image
+      - label: Tags
+        label_singular: "Tag"
+        name: "tags"
+        widget: list
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: relation
+          collection: "meta"
+          file: "portfolio-tags"
+          search_fields:
+            - "tags.*.name"
+          display_fields:
+            - "tags.*.name"
+          value_field: "tags.*.slug"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"

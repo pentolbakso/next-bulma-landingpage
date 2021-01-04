@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
+import config from "../cms/site-settings.json";
 
 const Feature = ({
   title,
@@ -37,11 +38,14 @@ const Feature = ({
 export default function Home() {
   return (
     <>
-      <NextSeo title="Web & Mobile App Development" />
+      <NextSeo
+        title={config.site_title}
+        description={config.site_description}
+      />
 
       <main>
         {/* hero */}
-        <section class="hero is-primary is-small">
+        <section class="hero is-primary is-fullheight">
           <div class="hero-body">
             <div class="container">
               <div class="columns is-vcentered">

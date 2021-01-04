@@ -9,7 +9,7 @@ export default function OurServices() {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Our Services</h2>
+            <h2 class="is-size-3">Our Services</h2>
             <div class="has-text-centered">
               <Image
                 src="/images/118-macbook.png"
@@ -19,7 +19,7 @@ export default function OurServices() {
                 height={400}
               />
             </div>
-            <p>
+            <p class="content">
               "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
               quae ab illo inventore veritatis et quasi architecto beatae vitae

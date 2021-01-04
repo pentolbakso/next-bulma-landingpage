@@ -8,6 +8,7 @@ import { DefaultSeo } from "next-seo";
 import "../static/css/nprogress.css";
 import SiteLayout from "../components/layout/SiteLayout";
 import * as gtag from "../lib/analytics";
+import config from "../cms/site-settings.json";
 
 // show progress on route changes
 NProgress.configure({ showSpinner: false });
@@ -32,10 +33,10 @@ class MyApp extends App {
           openGraph={{
             type: "website",
             locale: "en_EN",
-            url: "https://myawesomesite.com/",
-            site_name: "Web & Mobile App Development by Awesomesauce Studio",
+            url: config.base_url,
+            site_name: config.site_title,
           }}
-          titleTemplate="%s | Awesomesauce Studio"
+          titleTemplate={`%s | ${config.site_title}`}
         />
         <SiteLayout>
           <Component {...pageProps} />
