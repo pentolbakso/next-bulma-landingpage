@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
+import config from "../cms/site-settings.json";
 
 const Feature = ({
   title,
@@ -12,7 +14,7 @@ const Feature = ({
   <div class="columns is-vcentered">
     <div class="column has-text-centered">
       {isImageLeft ? (
-        <img src={image} style={{ objectFit: "cover", width, height }} />
+        <Image src={image} width={width} height={height} layout="intrinsic" />
       ) : (
         <div>
           <h1 class="title">{title}</h1>
@@ -22,7 +24,7 @@ const Feature = ({
     </div>
     <div class="column has-text-centered">
       {!isImageLeft ? (
-        <img src={image} style={{ objectFit: "cover", width, height }} />
+        <Image src={image} width={width} height={height} layout="intrinsic" />
       ) : (
         <div>
           <h1 class="title">{title}</h1>
@@ -36,11 +38,14 @@ const Feature = ({
 export default function Home() {
   return (
     <>
-      <NextSeo title="Web & Mobile App Development" />
+      <NextSeo
+        title={config.site_title}
+        description={config.site_description}
+      />
 
       <main>
         {/* hero */}
-        <section class="hero is-primary is-small">
+        <section class="hero is-primary is-fullheight">
           <div class="hero-body">
             <div class="container">
               <div class="columns is-vcentered">
@@ -61,10 +66,12 @@ export default function Home() {
                   </Link>
                 </div>
                 <div class="column">
-                  <img
+                  <Image
                     src="/images/day94-ui-ux.png"
                     alt="web studio"
-                    style={{ objectFit: "cover", width: 500, height: 300 }}
+                    layout="responsive"
+                    width={200}
+                    height={200}
                   />
                 </div>
               </div>
@@ -81,6 +88,8 @@ export default function Home() {
               aliqua"
               image="/images/day93-programing.png"
               isImageLeft={true}
+              width={300}
+              height={300}
             />
             <Feature
               title="Friendly"
@@ -89,6 +98,8 @@ export default function Home() {
               aliqua"
               image="/images/day92-freelancing.png"
               isImageLeft={false}
+              width={300}
+              height={300}
             />
             <Feature
               title="Modern"
@@ -97,6 +108,8 @@ export default function Home() {
               aliqua"
               image="/images/112-installing.png"
               isImageLeft={true}
+              width={300}
+              height={300}
             />
           </div>
         </section>

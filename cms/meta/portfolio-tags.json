@@ -1,0 +1,24 @@
+{
+  "tags": [
+    {
+      "slug": "frontend",
+      "name": "Frontend"
+    },
+    {
+      "slug": "backend",
+      "name": "Backend"
+    },
+    {
+      "slug": "javascript",
+      "name": "Javascript"
+    },
+    {
+      "slug": "laravel",
+      "name": "laravel"
+    },
+    {
+      "slug": "website",
+      "name": "Website"
+    }
+  ]
+}
