@@ -1,7 +1,6 @@
 const withPlugins = require("next-compose-plugins");
 const css = require("@zeit/next-css");
 const withSass = require("@zeit/next-sass");
-// const withMDX = require("@next/mdx")();
 
 const nextConfig = {
   target: "serverless",

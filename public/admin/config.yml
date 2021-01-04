@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: pentolbakso/next-bulma-landingpage
-  branch: cms
+  branch: master
 media_folder: "public/images"
 public_folder: "/images"
 #publish_mode: editorial_workflow

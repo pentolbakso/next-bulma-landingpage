@@ -3,6 +3,8 @@ import Link from "next/link";
 import { listPosts, countPosts } from "../../../lib/posts";
 import config from "../../../cms/site-settings.json";
 import { listTags } from "../../../lib/postTags";
+import BlogList from "../../../components/BlogList";
+import BlogTags from "../../../components/BlogTags";
 
 export default function Page({ posts, tags, pagination }) {
   return (
@@ -13,23 +15,10 @@ export default function Page({ posts, tags, pagination }) {
         <section class="section is-small">
           <div class="container">
             <h2 class="is-size-3">Blog - Page {pagination.current}</h2>
-            <div class="tags mt-3">
-              {tags.map((tag) => (
-                <Link href={`/blog/tag/${tag.slug}`}>
-                  <a class="tag">{tag.name}</a>
-                </Link>
-              ))}
-            </div>
+            <BlogTags tags={tags} />
             <hr class="mt-0" />
 
-            {posts.map((post) => (
-              <div class="block mt-3">
-                <div class="is-size-7 has-text-grey">{post.date}</div>
-                <div class="is-size-4">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </div>
-              </div>
-            ))}
+            <BlogList posts={posts} />
 
             <div class="buttons has-addons is-centered">
               <Link

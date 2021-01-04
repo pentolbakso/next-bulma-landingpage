@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import config from "../../cms/site-settings.json";
-import NavLink from "./NavLink";
+import NavLink from "../NavLink";
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);

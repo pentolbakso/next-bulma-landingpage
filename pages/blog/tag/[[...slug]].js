@@ -3,7 +3,7 @@ import Link from "next/link";
 import { countPosts, listPosts } from "../../../lib/posts";
 import config from "../../../cms/site-settings.json";
 import { getTag, listTags } from "../../../lib/postTags";
-import dayjs from "dayjs";
+import BlogList from "../../../components/BlogList";
 
 export default function Tag({ posts, tag, pagination, page }) {
   return (
@@ -21,16 +21,7 @@ export default function Tag({ posts, tag, pagination, page }) {
             </h2>
             <hr class="mt-2" />
 
-            {posts.map((post) => (
-              <div class="block mt-3">
-                <div class="is-size-7 has-text-grey">
-                  {dayjs(post.date).format("DD MMM YYYY")}
-                </div>
-                <div class="is-size-4">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </div>
-              </div>
-            ))}
+            <BlogList posts={posts} />
 
             {pagination.total > 1 && (
               <div class="buttons has-addons is-centered">
