@@ -3,7 +3,7 @@ backend:
   repo: pentolbakso/next-bulma-landingpage
   branch: cms
 media_folder: public/images
-public_folder: images
+public_folder: /images
 #publish_mode: editorial_workflow
 
 collections:
@@ -91,7 +91,7 @@ collections:
 
   - name: "posts"
     label: "Blog Posts"
-    folder: "pages/blog"
+    folder: "data/posts"
     extension: "mdx"
     format: "frontmatter"
     create: true
@@ -133,7 +133,7 @@ collections:
 
   - name: "portfolios"
     label: "Portfolio"
-    folder: "pages/portfolio"
+    folder: "data/portfolios"
     extension: "mdx"
     format: "frontmatter"
     create: true
