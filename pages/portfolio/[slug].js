@@ -1,15 +1,15 @@
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-import { getPostContent, listPosts } from "../../lib/posts";
+import { getPortfolioContent, listPortfolios } from "../../lib/portfolios";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import matter from "gray-matter";
 import yaml from "js-yaml";
-import dayjs from "dayjs";
+import Image from "next/image";
 
-export default function PostContent({ source, frontMatter }) {
+export default function PortfolioContent({ source, frontMatter }) {
   const content = hydrate(source, {});
-  const { title, date, tags } = frontMatter;
+  const { title, tags, image } = frontMatter;
   return (
     <>
       <NextSeo title={title} />
@@ -17,21 +17,24 @@ export default function PostContent({ source, frontMatter }) {
       <main>
         <section class="section is-small">
           <div class="container">
-            <Link href="/blog" passHref>
-              <a class="has-text-weight-bold">&#x2190; Blog</a>
+            <Link href="/portfolio" passHref>
+              <a class="has-text-weight-bold">&#x2190; Portfolios</a>
             </Link>
             <h2 class="is-size-3">{title}</h2>
             <div class="tags mt-3">
-              <span class="tag is-info is-light">
-                {dayjs(date).format("DD MMM YYYY")}
-              </span>
               {tags.map((tag) => (
-                <Link href={`/blog/tag/${tag}`}>
+                <Link href={`/portfolio/tag/${tag}`}>
                   <a class="tag">{tag}</a>
                 </Link>
               ))}
             </div>
-            <hr class="mt-0" />
+            <Image
+              src={image}
+              alt={title}
+              layout="responsive"
+              width={400}
+              height={200}
+            />
 
             <div class="content mt-3">{content}</div>
           </div>
@@ -42,14 +45,12 @@ export default function PostContent({ source, frontMatter }) {
 }
 
 export async function getStaticProps({ params }) {
-  const postContent = await getPostContent(params.slug);
-  const { data, content } = matter(postContent, {
+  const portfolioContent = await getPortfolioContent(params.slug);
+  const { data, content } = matter(portfolioContent, {
     engines: {
       yaml: (s) => yaml.safeLoad(s, { schema: yaml.JSON_SCHEMA }),
     },
   });
-
-  // TODO map tags
 
   const mdxSource = await renderToString(content, {
     scope: {},
@@ -63,7 +64,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = listPosts(1, 65535).map((it) => ({
+  const paths = listPortfolios().map((it) => ({
     params: {
       slug: it.slug,
     },

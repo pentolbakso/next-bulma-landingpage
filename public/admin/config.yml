@@ -166,6 +166,6 @@ collections:
           display_fields:
             - "tags.*.name"
           value_field: "tags.*.slug"
-      - label: "Description"
-        name: "description"
+      - label: "Body"
+        name: "body"
         widget: "markdown"

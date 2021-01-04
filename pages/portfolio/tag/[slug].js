@@ -1,18 +1,23 @@
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import Image from "next/image";
-import { listPortfolios } from "../../lib/portfolios";
-import { listTags } from "../../lib/portfolioTags";
+import { listPortfolios } from "../../../lib/portfolios";
+import { getTag, listTags } from "../../../lib/portfolioTags";
 
-export default function Portolios({ portfolios, tags }) {
+export default function Tag({ portfolios, tag }) {
   return (
     <>
-      <NextSeo title="Our Portfolios" />
+      <NextSeo title={`Portfolio ${tag.name}`} />
 
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-3">Our Portfolios</h2>
+            <Link href="/portfolio" passHref>
+              <a class="has-text-weight-bold">&#x2190; Portfolios</a>
+            </Link>
+            <h2 class="is-size-3">
+              Portfolio tagged with <em>{tag.name}</em>
+            </h2>
 
             <div class="columns is-multiline mt-3">
               {portfolios.map((it) => (
@@ -52,13 +57,21 @@ export default function Portolios({ portfolios, tags }) {
   );
 }
 
-export async function getStaticProps() {
-  const portfolios = listPortfolios();
-  const tags = listTags();
+export const getStaticProps = async ({ params }) => {
+  const slug = params.slug;
+  const portfolios = listPortfolios(slug);
+  const tag = getTag(slug);
+  return { props: { portfolios, tag } };
+};
+
+export const getStaticPaths = async () => {
+  const paths = listTags().flatMap((tag) => {
+    return {
+      params: { slug: tag.slug },
+    };
+  });
   return {
-    props: {
-      portfolios,
-      tags,
-    },
+    paths: paths,
+    fallback: false,
   };
-}
+};
