@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { listPosts, countPosts } from "../../../lib/posts";
 import config from "../../../cms/site-settings.json";
-import { listTags } from "../../../lib/tags";
+import { listTags } from "../../../lib/postTags";
 
 export default function Page({ posts, tags, pagination }) {
   return (

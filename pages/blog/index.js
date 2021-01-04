@@ -2,10 +2,10 @@ import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { listPosts, countPosts } from "../../lib/posts";
 import config from "../../cms/site-settings.json";
-import { listTags } from "../../lib/tags";
+import { listTags } from "../../lib/postTags";
 import dayjs from "dayjs";
 
-export default function Blog({ posts, tags, pagination }) {
+export default function Blogs({ posts, tags, pagination }) {
   return (
     <>
       <NextSeo title="Blog" />
