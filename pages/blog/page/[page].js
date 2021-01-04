@@ -12,7 +12,7 @@ export default function Page({ posts, tags, pagination }) {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Blog - Page {pagination.current}</h2>
+            <h2 class="is-size-3">Blog - Page {pagination.current}</h2>
             <div class="tags mt-3">
               {tags.map((tag) => (
                 <Link href={`/blog/tag/${tag.slug}`}>
@@ -20,11 +20,12 @@ export default function Page({ posts, tags, pagination }) {
                 </Link>
               ))}
             </div>
+            <hr class="mt-0" />
 
             {posts.map((post) => (
               <div class="block mt-3">
-                <div class="is-size-6 has-text-grey">{post.date}</div>
-                <div class="is-size-3">
+                <div class="is-size-7 has-text-grey">{post.date}</div>
+                <div class="is-size-4">
                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </div>
               </div>

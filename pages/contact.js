@@ -25,7 +25,7 @@ export default function Contact() {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Get in touch</h2>
+            <h2 class="is-size-3">Get in touch</h2>
             <br />
             <ul class="is-size-5">
               <li>

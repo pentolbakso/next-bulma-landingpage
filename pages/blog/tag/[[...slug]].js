@@ -3,6 +3,7 @@ import Link from "next/link";
 import { countPosts, listPosts } from "../../../lib/posts";
 import config from "../../../cms/site-settings.json";
 import { getTag, listTags } from "../../../lib/tags";
+import dayjs from "dayjs";
 
 export default function Tag({ posts, tag, pagination, page }) {
   return (
@@ -12,14 +13,20 @@ export default function Tag({ posts, tag, pagination, page }) {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">
+            <Link href="/blog" passHref>
+              <a class="has-text-weight-bold">&#x2190; Blog</a>
+            </Link>
+            <h2 class="is-size-3">
               Blog posts tagged with <em>{tag.name}</em>
             </h2>
+            <hr class="mt-2" />
 
             {posts.map((post) => (
               <div class="block mt-3">
-                <div class="is-size-6 has-text-grey">{post.date}</div>
-                <div class="is-size-3">
+                <div class="is-size-7 has-text-grey">
+                  {dayjs(post.date).format("DD MMM YYYY")}
+                </div>
+                <div class="is-size-4">
                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </div>
               </div>

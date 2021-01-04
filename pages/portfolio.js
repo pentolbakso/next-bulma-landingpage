@@ -40,7 +40,7 @@ export default function Portfolio() {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Portfolio</h2>
+            <h2 class="is-size-3">Portfolio</h2>
             <br />
             <div class="columns is-multiline">
               {porfolios.map((p) => (

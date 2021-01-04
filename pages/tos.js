@@ -8,7 +8,7 @@ export default function TermsOfServices() {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Terms Of Services</h2>
+            <h2 class="is-size-3">Terms Of Services</h2>
             <p>
               "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa

@@ -9,7 +9,7 @@ export default function OurServices() {
       <main>
         <section class="section is-small">
           <div class="container">
-            <h2 class="is-size-4">Our Services</h2>
+            <h2 class="is-size-3">Our Services</h2>
             <div class="has-text-centered">
               <Image
                 src="/images/118-macbook.png"
