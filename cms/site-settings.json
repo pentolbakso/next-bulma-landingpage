@@ -2,19 +2,11 @@
   "base_url": "https://next-bulma-landingpage.now.sh/",
   "site_title": "Awesomesauce Studio",
   "site_description": "Awesomesauce Studio website and portfolios",
-  "site_keywords": [
-    {
-      "keyword": "Web Development"
-    },
-    {
-      "keyword": "Portfolios"
-    },
-    {
-      "keyword": "Next.js"
-    }
-  ],
   "posts_per_page": 5,
   "twitter_account": "@my-account",
   "facebook_account": "my-account",
-  "instagram_account": "my-account"
+  "instagram_account": "my-account",
+  "contact_email": "hello@awesomesauce.com",
+  "contact_phonenumber": "+628122O9267O",
+  "contact_address": "Bandung, Indonesia"
 }
