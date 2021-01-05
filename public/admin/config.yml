@@ -1,5 +1,6 @@
 backend:
-  name: github
+  # name: github
+  name: test-repo
   repo: pentolbakso/next-bulma-landingpage
   branch: master
 media_folder: "public/images"
